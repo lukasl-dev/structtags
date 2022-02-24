@@ -102,8 +102,7 @@ func (p *parser) parseOptions() (parse, error) {
 }
 
 func (p *parser) end() (parse, error) {
-	p.tags[p.name] = Tag{Value: p.value, Options: p.opts}
-
+	p.tags[p.name] = Tag{Value: p.value, Options: NewOptionSet(p.opts...)}
 	if p.s == "" {
 		return nil, nil
 	}

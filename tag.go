@@ -7,8 +7,8 @@ type Tag struct {
 	// struct tag `json:"foo,omitempty` has the value "foo".
 	Value string `json:"value,omitempty"`
 
-	// Options is a slice of strings that are used as boolean options in the
+	// Options is a set of strings that are used as boolean options in the
 	// struct tag. For example, the struct tag `json:"foo,omitempty"` has an
 	// option labelled "omitempty".
-	Options []string `json:"options,omitempty"`
+	Options OptionSet `json:"options,omitempty"`
 }
