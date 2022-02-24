@@ -46,7 +46,7 @@ func TestParse_ValidTagWithOption(t *testing.T) {
 	r.Equal("value", tag.Value)
 
 	r.Len(tag.Options, 1)
-	r.Equal("omitempty", tag.Options[0])
+	r.Equal("omitempty", tag.Options.Slice()[0])
 }
 
 func TestParse_ValidTagWithOptions(t *testing.T) {
@@ -60,7 +60,8 @@ func TestParse_ValidTagWithOptions(t *testing.T) {
 	tag := tags["json"]
 	r.Equal("value", tag.Value)
 
-	r.Len(tag.Options, 2)
-	r.Equal("omitempty", tag.Options[0])
-	r.Equal("foo", tag.Options[1])
+	sl := tag.Options.Slice()
+	r.Len(sl, 2)
+	r.Equal("omitempty", sl[0])
+	r.Equal("foo", sl[1])
 }
